@@ -22,15 +22,21 @@ from data_prediction import prediction_USE
 
 app = Flask(__name__)
 
-#API_URL = 'https://kind-dune-0b12b7203.3.azurestaticapps.net/'
-    
+#API_URL = 'https://kind-dune-0b12b7203.3.azurestaticapps.net/'  # Azure
+#API_URL = 'https://app-texte-1-3ed8a3f34c3b.herokuapp.com/'
     
 question = 'peux-tu me prédire le tag de cette phrase : vvvv vvvvv ggffgfggf gfgfgfgfgfg ytnfvmf kfkfkfk ooooooo ooooogogogogg'
+
 
 @app.route("/")
 def hello():
     return "Bonjour, merci de taper NLTK ou USE"
 
+
+
+###############################################
+#                  NLTK                       #
+###############################################    
 @app.route('/NLTK/')
 def nltk():
     # Préparation données
@@ -45,7 +51,10 @@ def nltk():
                    })    
 
     
-    
+
+###############################################
+#                  USE                        #
+###############################################    
 @app.route('/USE')
 def use():
     # Préparation données
@@ -58,6 +67,7 @@ def use():
     return jsonify({'status'   : 'ok',
                     'message'  : pred_USE
                    })    
+
 
 
 if __name__ == "__main__":

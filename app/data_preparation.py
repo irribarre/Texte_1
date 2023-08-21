@@ -2,10 +2,13 @@
 
 import re
 
-
 ###################################################
 #             PREPARATION DES DONNEES             #
 ###################################################
+
+###############################################
+#                  NLTK                       #
+###############################################    
 # Préparation des données avec NLTK
 def preparation_NLTK(question_in):
     print('preparation_NLTK')
@@ -16,6 +19,9 @@ def preparation_NLTK(question_in):
 
 
 
+###############################################
+#                  USE                        #
+###############################################    
 # Préparation des données avec USE
 def preparation_USE(question_in):
     print('preparation_USE')
@@ -23,6 +29,7 @@ def preparation_USE(question_in):
     result = question_in[0:10]
     
     return(result) 
+
 
 
 
