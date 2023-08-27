@@ -338,7 +338,7 @@ def preparation_nltk(question_in):
     vect_stemmer.fit(corpus_liste_doc_stemmer)
     print('preparation_nltk, len(vect_stemmer.vocabulary_) =', len(vect_stemmer.vocabulary_), 'mots de vocabulaire pour stemmer')
     # Affichage des 20 premiers mots
-    print('preparation_nltk, vect_stemmer.vocabulary_ =', str(dict(list(vect_stemmer.vocabulary_.items())))
+    print('preparation_nltk, vect_stemmer.vocabulary_ =', str(dict(list(vect_stemmer.vocabulary_.items()))))
     print('preparation_nltk, vect_stemmer.get_feature_names =', len(vect_stemmer.get_feature_names()))
 
 
