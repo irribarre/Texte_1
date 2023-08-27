@@ -29,7 +29,7 @@ app = Flask(__name__)
 @app.route("/")
 def accueil():
 
-    texte = "Bonjour,<br/><br/>1) Merci de saisir votre question sur le endPoint <b>/question</b>.<br/><br/>2) La pédiction du tag se trouve sur le endPoint de la méthode utilisée :<br/>>>>>>>> endPoint <b>/nltk</b> pour NLTK.<br/>>>>>>>> endPoint <b>/use</b> pour USE."
+    texte = "Bonjour,<br/><br/>1) Merci de saisir votre question sur le endPoint <b>/question</b>.<br/><br/>2) La prédiction du tag se trouve sur le endPoint de la méthode utilisée :<br/>>>>>>>> endPoint <b>/nltk</b> pour NLTK.<br/>>>>>>>> endPoint <b>/use</b> pour USE."
     return texte
 
 
