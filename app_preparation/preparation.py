@@ -28,7 +28,7 @@ def lecture_fichier(file_name_in):
     words = []
     print('lecture fichier', file_name_in)
     
-    with open(file_name_in) as f:
+    with open('./app_preparation/' + file_name_in) as f:
         for word in f.readlines():
             words.append(word[:-1])
     return words
