@@ -10,6 +10,7 @@ from nltk.tokenize import RegexpTokenizer
 from nltk.corpus import stopwords
 import emoji
 from nltk.stem import WordNetLemmatizer, PorterStemmer
+from sklearn.feature_extraction.text import CountVectorizer
 
 
 ###################################################
@@ -334,7 +335,8 @@ def preparation_nltk(question_in):
     #           'And this is the third one.',
     #           'Is this the first document?'] 
     # Ici ion a un seul document (car une seule question).
-    corpus_liste_doc_stemmer = question_stemmer_clean_final
+    corpus_liste_doc_stemmer   = []
+    corpus_liste_doc_stemmer.append(question_stemmer_clean_final)
     vect_stemmer.fit(corpus_liste_doc_stemmer)
     print('preparation_nltk, len(vect_stemmer.vocabulary_) =', len(vect_stemmer.vocabulary_), 'mots de vocabulaire pour stemmer')
     # Affichage des 20 premiers mots
