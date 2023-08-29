@@ -40,54 +40,72 @@ def accueil():
 #                  Question                   #
 ###############################################    
 # handle a POST request
-@app.route('/question', methods=['POST'])
-def endpoint_question():
-
-#    data = question_python_1
-    data = request.form
-
-    # handle the POST request
-    language = request.form.get('question')
-    framework = request.form.get('framework')
-    return '''<h1>The language value is: {}</h1>
-              <h1>The framework value is: {}</h1>'''.format(language, framework)
-#               <h1>The language value is: {}</h1>'''.format(question)
-    
+#@app.route('/question', methods=['POST'])
+#def endpoint_question():
+#
+##    data = question_python_1
+#    data = request.form
+#
+#    # handle the POST request
+#    language = request.form.get('question')
+#    framework = request.form.get('framework')
+#    return '''<h1>The language value is: {}</h1>
+#              <h1>The framework value is: {}</h1>'''.format(language, framework)
+##               <h1>The language value is: {}</h1>'''.format(question)
+#    
 #    # Traiter la requête
 #    return data
-
+#
 # https://www.digitalocean.com/community/tutorials/processing-incoming-request-data-in-flask-fr
 # allow both GET and POST requests
-@app.route('/form-example', methods=['GET', 'POST'])
-def form_example():
-    # handle the POST request
-    if request.method == 'POST':
-        question = request.form.get('question')
-        algorithme = request.form.get('algorithme (NLTK / USE)')
-        
-        
-        # Préparation données
-        question_nltk = preparation.preparation_nltk(question_in = question)
-    
-        # Prédiction tag  
-        pred_nltk = prediction.prediction_nltk(question_in = question_nltk)
-    
-#        return '''
-#                  <h1>La question est : {}</h1>
-#                  <h1>L'algorithme est : {}</h1>'''.format(question, pred_nltk)
-        # Affichage résultat 
-        return jsonify({'status'   : 'ok',
-                        'message'  : pred_nltk
-                       })    
-    
-    
-    # otherwise handle the GET request
+#@app.route('/form-example', methods=['GET', 'POST'])
+#def form_example():
+#    # handle the POST request
+#    if request.method == 'POST':
+#        question = request.form.get('question')
+#        algorithme = request.form.get('algorithme (NLTK / USE)')
+#        
+#        
+#        # Préparation données
+#        question_nltk = preparation.preparation_nltk(question_in = question)
+#    
+#        # Prédiction tag  
+#        pred_nltk = prediction.prediction_nltk(question_in = question_nltk)
+#    
+##        return '''
+##                  <h1>La question est : {}</h1>
+##                  <h1>L'algorithme est : {}</h1>'''.format(question, pred_nltk)
+#        # Affichage résultat 
+#        return jsonify({'status'   : 'ok',
+#                        'message'  : pred_nltk
+#                       })    
+#    
+#    
+#    # otherwise handle the GET request
+#    return '''
+#           <form method="POST">
+#               <div><label>Question: <input type="text" name="question"></label></div>
+#               <div><label>Algorithme: <input type="text" name="algorithme"></label></div>
+#               <input type="submit" value="Submit">
+#           </form>'''
+
+
+@app.route('/query-example')
+def query_example():
+    # if key doesn't exist, returns None
+    language = request.args.get('language')
+
+    # if key doesn't exist, returns a 400, bad request error
+    framework = request.args['framework']
+
+    # if key doesn't exist, returns None
+    website = request.args.get('website')
+
     return '''
-           <form method="POST">
-               <div><label>Question: <input type="text" name="question"></label></div>
-               <div><label>Algorithme: <input type="text" name="algorithme"></label></div>
-               <input type="submit" value="Submit">
-           </form>'''
+              <h1>The language value is: {}</h1>
+              <h1>The framework value is: {}</h1>
+              <h1>The website value is: {}'''.format(language, framework, website)
+
 
 
 ###############################################
