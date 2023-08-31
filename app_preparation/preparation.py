@@ -6,10 +6,11 @@ import numpy as np
 from string import punctuation
 import re
 from bs4 import BeautifulSoup
+import nltk
 from nltk.tokenize import RegexpTokenizer
 from nltk.corpus import stopwords
-import emoji
 from nltk.stem import WordNetLemmatizer, PorterStemmer
+import emoji
 from sklearn.feature_extraction.text import CountVectorizer
 
 
@@ -50,6 +51,8 @@ doublons         = lecture_fichier(file_name_in = 'doublons.txt')
 liste_rare_words_stemmer = lecture_fichier(file_name_in = 'rare_words_stemmer.txt')
 liste_rare_words_lemma   = lecture_fichier(file_name_in = 'rare_words_lemma.txt')
 
+
+nltk.download('wordnet')
 
 
     

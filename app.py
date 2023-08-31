@@ -5,11 +5,10 @@
 #####################################################################
 
 # -*- coding: utf-8 -*-
+# Maj Procfile : https://medium.com/@gitaumoses4/deploying-a-flask-application-on-heroku-e509e5c76524
+
 
 from flask import Flask, request, url_for, jsonify
-#import os
-
-#import nbimporter     # Pour importer d'autre jupyter notebooks
 
 # Import common functions
 from app_preparation import preparation # fonctions de préparation
@@ -18,14 +17,6 @@ from app_prediction import prediction # fonctions de prédiction
 app = Flask(__name__)
 
 
-#os.environ.get('PORT', 5000)
-#print('os =', os)
-
-
-#API_URL = 'https://app-texte-1-3ed8a3f34c3b.herokuapp.com/'
-
-# https://stackoverflow.com/questions/70577/best-online-resource-to-learn-python
-#question_python_1 = "Best online resource to learn Python? <br/> I am new to any scripting language. But, Still I worked on scripting a bit like tailoring other scripts to work for my purpose. For me, What is the best online resource to learn Python? <br/> Some Online Resources: <br/> http://docs.python.org/tut/tut.html - Beginners <br/> http://diveintopython3.ep.io/ - Intermediate <br/> http://www.pythonchallenge.com/ - Expert Skills <br/>http://docs.python.org/ - collection of all knowledge<br/>Some more: A Byte of Python. <br/>Python 2.5 Quick Reference<br/>Python Side bar<br/>A Nice blog for beginners<br/>Think Python: An Introduction to Software Design"    
 
 
 ###############################################
@@ -34,7 +25,6 @@ app = Flask(__name__)
 @app.route("/")
 def accueil():
 
-#    texte = "Bonjour titi."
     texte = "Bonjour,<br/><br/>La prédiction du tag se trouve sur le endPoint de la méthode utilisée (NLTK / USE).<br/><br/><br/>Merci de vous rendre sur le endPoint choisi pour saisir votre question :<br/><br/>1) Méthode NLTK -------> endPoint <b>/nltk</b>.<br/>2) Méthode USE  ---------> endPoint <b>/use</b>."    
     return texte
 
