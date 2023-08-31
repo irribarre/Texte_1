@@ -90,6 +90,7 @@ def accueil():
 #           </form>'''
 
 
+# https://www.digitalocean.com/community/tutorials/processing-incoming-request-data-in-flask-fr
 @app.route('/query-example')
 def query_example():
     # if key doesn't exist, returns None
@@ -107,6 +108,7 @@ def query_example():
               <h1>The website value is: {}'''.format(language, framework, website)
 
 
+# https://www.digitalocean.com/community/tutorials/processing-incoming-request-data-in-flask-fr
 # GET requests will be blocked
 @app.route('/json-example', methods=['POST'])
 def json_example():
