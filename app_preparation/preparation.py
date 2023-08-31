@@ -370,6 +370,8 @@ def preparation_nltk(question_in):
 # Préparation des données avec USE : création des features
 def preparation_use(question_in):
           
+    embed = hub.load("https://tfhub.dev/google/universal-sentence-encoder/4") # USE (Universal Sentence Encoder)
+
     print('\n\n\n')
     print('@' * 30, ' preparation_use ', '@' * 30)
     print('preparation_use, question_in =', question_in)
@@ -379,7 +381,7 @@ def preparation_use(question_in):
     sentences   = []
     sentences.append(question_in)  
 #    sentences = question_in.to_list()
-    print('preparation_use, question_in =', question_in)
+    print('preparation_use, sentences =', sentences)
           
           
     batch_size = 1
