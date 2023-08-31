@@ -12,8 +12,8 @@ from flask import Flask, request, url_for, jsonify
 #import nbimporter     # Pour importer d'autre jupyter notebooks
 
 # Import common functions
-#from app_preparation import preparation # fonctions de préparation
-#from app_prediction import prediction # fonctions de prédiction
+from app_preparation import preparation # fonctions de préparation
+from app_prediction import prediction # fonctions de prédiction
 
 app = Flask(__name__)
 
@@ -34,8 +34,8 @@ app = Flask(__name__)
 @app.route("/")
 def accueil():
 
-    texte = "Bonjour titi."
-    #texte = "Bonjour,<br/><br/>La prédiction du tag se trouve sur le endPoint de la méthode utilisée (NLTK / USE).<br/><br/><br/>Merci de vous rendre sur le endPoint choisi pour saisir votre question :<br/><br/>1) Méthode NLTK -------> endPoint <b>/nltk</b>.<br/>2) Méthode USE  ---------> endPoint <b>/use</b>."    
+#    texte = "Bonjour titi."
+    texte = "Bonjour,<br/><br/>La prédiction du tag se trouve sur le endPoint de la méthode utilisée (NLTK / USE).<br/><br/><br/>Merci de vous rendre sur le endPoint choisi pour saisir votre question :<br/><br/>1) Méthode NLTK -------> endPoint <b>/nltk</b>.<br/>2) Méthode USE  ---------> endPoint <b>/use</b>."    
     return texte
 
 
