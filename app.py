@@ -15,7 +15,7 @@ from flask import Flask, request, url_for, jsonify
 from app_preparation import preparation # fonctions de préparation
 from app_prediction import prediction # fonctions de prédiction
 
-
+PORT = process.env.PORT || 5000
 app = Flask(__name__)
 
 
