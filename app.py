@@ -14,8 +14,8 @@ from flask import Flask, request, url_for, jsonify
 from app_preparation import preparation # fonctions de préparation
 from app_prediction import prediction # fonctions de prédiction
 
-app = Flask(__name__)
 
+app = Flask(__name__)
 
 
 
