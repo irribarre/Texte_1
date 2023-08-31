@@ -15,8 +15,6 @@ import emoji
 from sklearn.feature_extraction.text import CountVectorizer
 
 
-# nltk.download()                  # wordnet
-#from nltk.corpus import wordnet   # wordnet
 
 
 ###################################################
@@ -57,7 +55,8 @@ liste_rare_words_stemmer = lecture_fichier(file_name_in = 'rare_words_stemmer.tx
 liste_rare_words_lemma   = lecture_fichier(file_name_in = 'rare_words_lemma.txt')
 
 
-    
+
+
 #####################################################################################
 # Nettoyage au niveau des chaînes de caractères :                                   #
 #  - Suppression des balises HTML                                                   #
@@ -377,7 +376,9 @@ def preparation_use(question_in):
 
     
     # texte brut 
-    sentences = question_in.to_list()
+    sentences   = []
+    sentences.append(question_in)  
+#    sentences = question_in.to_list()
     print('preparation_use, question_in =', question_in)
           
           
