@@ -7,16 +7,16 @@ from string import punctuation
 import re
 from bs4 import BeautifulSoup
 import nltk
+nltk.download('wordnet')
 from nltk.tokenize import RegexpTokenizer
 from nltk.corpus import stopwords
 from nltk.stem import WordNetLemmatizer, PorterStemmer
 import emoji
 from sklearn.feature_extraction.text import CountVectorizer
 
-# nltk.download('wordnet') # wordnet
-# nltk.download()          # wordnet
-from nltk.corpus import wordnet
 
+# nltk.download()                  # wordnet
+#from nltk.corpus import wordnet   # wordnet
 
 
 ###################################################
@@ -74,7 +74,7 @@ def cleaning_chaine(texte_in):
         
         
     # Suppression des balises HTML
-    soup = BeautifulSoup(texte_in)
+    soup = BeautifulSoup(texte_in, "html.parser")
     soup_text = soup.get_text()
     print('cleaning_chaine, soup_text =', soup_text)
 
