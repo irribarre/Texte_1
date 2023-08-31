@@ -12,8 +12,8 @@ from flask import Flask, request, url_for, jsonify
 #import nbimporter     # Pour importer d'autre jupyter notebooks
 
 # Import common functions
-from app_preparation import preparation # fonctions de préparation
-from app_prediction import prediction # fonctions de prédiction
+#from app_preparation import preparation # fonctions de préparation
+#from app_prediction import prediction # fonctions de prédiction
 
 app = Flask(__name__)
 
@@ -22,7 +22,7 @@ app = Flask(__name__)
 #print('os =', os)
 
 
-API_URL = 'https://app-texte-1-3ed8a3f34c3b.herokuapp.com/'
+#API_URL = 'https://app-texte-1-3ed8a3f34c3b.herokuapp.com/'
 
 # https://stackoverflow.com/questions/70577/best-online-resource-to-learn-python
 question_python_1 = "Best online resource to learn Python? <br/> I am new to any scripting language. But, Still I worked on scripting a bit like tailoring other scripts to work for my purpose. For me, What is the best online resource to learn Python? <br/> Some Online Resources: <br/> http://docs.python.org/tut/tut.html - Beginners <br/> http://diveintopython3.ep.io/ - Intermediate <br/> http://www.pythonchallenge.com/ - Expert Skills <br/>http://docs.python.org/ - collection of all knowledge<br/>Some more: A Byte of Python. <br/>Python 2.5 Quick Reference<br/>Python Side bar<br/>A Nice blog for beginners<br/>Think Python: An Introduction to Software Design"    
@@ -34,7 +34,8 @@ question_python_1 = "Best online resource to learn Python? <br/> I am new to any
 @app.route("/")
 def accueil():
 
-    texte = "Bonjour,<br/><br/>La prédiction du tag se trouve sur le endPoint de la méthode utilisée (NLTK / USE).<br/><br/><br/>Merci de vous rendre sur le endPoint choisi pour saisir votre question :<br/><br/>1) Méthode NLTK -------> endPoint <b>/nltk</b>.<br/>2) Méthode USE  ---------> endPoint <b>/use</b>."
+    texte = "Bonjour titi."
+    #texte = "Bonjour,<br/><br/>La prédiction du tag se trouve sur le endPoint de la méthode utilisée (NLTK / USE).<br/><br/><br/>Merci de vous rendre sur le endPoint choisi pour saisir votre question :<br/><br/>1) Méthode NLTK -------> endPoint <b>/nltk</b>.<br/>2) Méthode USE  ---------> endPoint <b>/use</b>."    
     return texte
 
 
@@ -161,10 +162,10 @@ def endpoint_nltk():
     question = request.args['question']
 
     # Préparation données
-    question_nltk = preparation.preparation_nltk(question_in = question)
+#    question_nltk = preparation.preparation_nltk(question_in = question)
     
     # Prédiction tag  
-    pred_nltk = prediction.prediction_nltk(question_in = question_nltk)
+#    pred_nltk = prediction.prediction_nltk(question_in = question_nltk)
    
     # Affichage résultat 
     return jsonify({'status'   : 'ok',
@@ -185,10 +186,10 @@ def endpoint_use():
     question = request.args['question']
     
     # Préparation données
-    question_use = preparation.preparation_use(question_in = question)
+#    question_use = preparation.preparation_use(question_in = question)
     
     # Prédiction tag  
-    pred_use = prediction.prediction_use(question_in = question_use)
+#    pred_use = prediction.prediction_use(question_in = question_use)
    
     # Affichage résultat 
     return jsonify({'status'   : 'ok',
