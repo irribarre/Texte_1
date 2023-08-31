@@ -49,7 +49,11 @@ def prediction_nltk(question_in):
 
 
     # Making a prediction on the test set
-    y_pred = ovr.predict(question_in)
+    # https://github.com/automl/auto-sklearn/issues/849
+    pickle.dump(ovr, open(NLTK_MODEL, 'wb'))
+    loaded_model = pickle.load(NLTK_MODEL)
+    y_pred = loaded_model.predict(question_in)
+#    y_pred = ovr.predict(question_in)
     
     print('y_pred (NLTK) =', y_pred)
     
@@ -91,9 +95,12 @@ def prediction_use(question_in):
 #    ovr = joblib.load(USE_MODEL)
     
     # Making a prediction on the test set
+    # https://github.com/automl/auto-sklearn/issues/849
+    pickle.dump(ovr, open(NLTK_MODEL, 'wb'))
+    loaded_model = pickle.load(NLTK_MODEL)
+    y_pred = loaded_model.predict(question_in)    
     y_pred = ovr.predict(question_in)
-    
-    print('y_pred (USE) =', y_pred)
+#    print('y_pred (USE) =', y_pred)
     
     return(y_pred)
  
