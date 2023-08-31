@@ -7,7 +7,7 @@
 # -*- coding: utf-8 -*-
 
 from flask import Flask, request, url_for, jsonify
-import os
+#import os
 
 #import nbimporter     # Pour importer d'autre jupyter notebooks
 
@@ -18,11 +18,11 @@ from app_prediction import prediction # fonctions de prédiction
 app = Flask(__name__)
 
 
-os.environ.get('PORT', 5000)
-print('os =', os)
+#os.environ.get('PORT', 5000)
+#print('os =', os)
 
 
-#API_URL = 'https://app-texte-1-3ed8a3f34c3b.herokuapp.com/'
+API_URL = 'https://app-texte-1-3ed8a3f34c3b.herokuapp.com/'
 
 # https://stackoverflow.com/questions/70577/best-online-resource-to-learn-python
 question_python_1 = "Best online resource to learn Python? <br/> I am new to any scripting language. But, Still I worked on scripting a bit like tailoring other scripts to work for my purpose. For me, What is the best online resource to learn Python? <br/> Some Online Resources: <br/> http://docs.python.org/tut/tut.html - Beginners <br/> http://diveintopython3.ep.io/ - Intermediate <br/> http://www.pythonchallenge.com/ - Expert Skills <br/>http://docs.python.org/ - collection of all knowledge<br/>Some more: A Byte of Python. <br/>Python 2.5 Quick Reference<br/>Python Side bar<br/>A Nice blog for beginners<br/>Think Python: An Introduction to Software Design"    
