@@ -12,8 +12,9 @@ from nltk.tokenize import RegexpTokenizer
 from nltk.corpus import stopwords
 from nltk.stem import WordNetLemmatizer, PorterStemmer
 import emoji
-from sklearn.feature_extraction.text import CountVectorizer
 
+from sklearn.feature_extraction.text import CountVectorizer
+import tensorflow_hub as hub
 
 
 
