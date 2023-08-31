@@ -25,7 +25,7 @@ app = Flask(__name__)
 #API_URL = 'https://app-texte-1-3ed8a3f34c3b.herokuapp.com/'
 
 # https://stackoverflow.com/questions/70577/best-online-resource-to-learn-python
-question_python_1 = "Best online resource to learn Python? <br/> I am new to any scripting language. But, Still I worked on scripting a bit like tailoring other scripts to work for my purpose. For me, What is the best online resource to learn Python? <br/> Some Online Resources: <br/> http://docs.python.org/tut/tut.html - Beginners <br/> http://diveintopython3.ep.io/ - Intermediate <br/> http://www.pythonchallenge.com/ - Expert Skills <br/>http://docs.python.org/ - collection of all knowledge<br/>Some more: A Byte of Python. <br/>Python 2.5 Quick Reference<br/>Python Side bar<br/>A Nice blog for beginners<br/>Think Python: An Introduction to Software Design"    
+#question_python_1 = "Best online resource to learn Python? <br/> I am new to any scripting language. But, Still I worked on scripting a bit like tailoring other scripts to work for my purpose. For me, What is the best online resource to learn Python? <br/> Some Online Resources: <br/> http://docs.python.org/tut/tut.html - Beginners <br/> http://diveintopython3.ep.io/ - Intermediate <br/> http://www.pythonchallenge.com/ - Expert Skills <br/>http://docs.python.org/ - collection of all knowledge<br/>Some more: A Byte of Python. <br/>Python 2.5 Quick Reference<br/>Python Side bar<br/>A Nice blog for beginners<br/>Think Python: An Introduction to Software Design"    
 
 
 ###############################################
@@ -162,10 +162,10 @@ def endpoint_nltk():
     question = request.args['question']
 
     # Préparation données
-#    question_nltk = preparation.preparation_nltk(question_in = question)
+    question_nltk = preparation.preparation_nltk(question_in = question)
     
     # Prédiction tag  
-#    pred_nltk = prediction.prediction_nltk(question_in = question_nltk)
+    pred_nltk = prediction.prediction_nltk(question_in = question_nltk)
    
     # Affichage résultat 
     return jsonify({'status'   : 'ok',
@@ -186,68 +186,16 @@ def endpoint_use():
     question = request.args['question']
     
     # Préparation données
-#    question_use = preparation.preparation_use(question_in = question)
+    question_use = preparation.preparation_use(question_in = question)
     
     # Prédiction tag  
-#    pred_use = prediction.prediction_use(question_in = question_use)
+    pred_use = prediction.prediction_use(question_in = question_use)
    
     # Affichage résultat 
     return jsonify({'status'   : 'ok',
                     'message'  : pred_use
                    })    
 
-
-#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ exemple (begin)
-# https://flask-request-params.readthedocs.io/en/latest/
-#from flask import Flask, request, render_template, jsonify
-#from flask_request_params import bind_request_params
-#
-#
-#app = Flask(__name__)
-#app.secret_key = 'secret'
-## bind rails like params to request.params
-#app.before_request(bind_request_params)
-#
-## just return request.params
-#@app.route('/echo/<path>', methods=['GET', 'POST'])
-#def echo(path):
-#    return jsonify(request.params)
-#
-#@app.route('/user', methods=['POST'])
-#def create_user():
-#    user = request.params.require('user').permit('name', 'password')
-#    # do something
-#    return jsonify(user)
-#
-## serve at localhost:5000
-#app.run(debug=True)
-#
-#--------------------------------------------------------
-#
-#@app.route('/api/meteo')
-#def meteo():
-#    response = requests.get(METEO_API_URL)
-#    content = json.loads(response.content.decode('utf-8'))
-#
-#    if response.status_code != 200:
-#        return jsonify({
-#            'status': 'error',
-#            'message': 'La requête à l\'API météo n\'a pas fonctionné. Voici le message renvoyé par l\'API : {}'.format(content['message'])
-#        }), 500
-#
-#    data = []
-#
-#    for prev in content["list"]:
-#        datetime = prev['dt'] * 1000 # conversion du timestamp en millisecondes
-#        temperature = prev['main']['temp'] - 273.15 # Conversion de Kelvin en °c
-#        temperature = round(temperature, 2) # Arrondi
-#        data.append([datetime, temperature])
-#
-#    return jsonify({
-#      'status': 'ok', 
-#      'data': data
-#    })
-#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ exemple (end)
 
 
 if __name__ == "__main__":
