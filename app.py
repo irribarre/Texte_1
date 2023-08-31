@@ -7,7 +7,7 @@
 # -*- coding: utf-8 -*-
 
 from flask import Flask, request, url_for, jsonify
-
+import os
 
 #import nbimporter     # Pour importer d'autre jupyter notebooks
 
@@ -15,8 +15,11 @@ from flask import Flask, request, url_for, jsonify
 from app_preparation import preparation # fonctions de préparation
 from app_prediction import prediction # fonctions de prédiction
 
-PORT = process.env.PORT || 5000
 app = Flask(__name__)
+
+
+os.environ.get('PORT', 5000)
+print('os =', os)
 
 
 #API_URL = 'https://app-texte-1-3ed8a3f34c3b.herokuapp.com/'
