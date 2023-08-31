@@ -13,6 +13,11 @@ from nltk.stem import WordNetLemmatizer, PorterStemmer
 import emoji
 from sklearn.feature_extraction.text import CountVectorizer
 
+# nltk.download('wordnet') # wordnet
+# nltk.download()          # wordnet
+from nltk.corpus import wordnet
+
+
 
 ###################################################
 #             PREPARATION DES DONNEES             #
@@ -50,9 +55,6 @@ doublons         = lecture_fichier(file_name_in = 'doublons.txt')
 # >>>>>>> fonction cleaning_complement_normalisation
 liste_rare_words_stemmer = lecture_fichier(file_name_in = 'rare_words_stemmer.txt')
 liste_rare_words_lemma   = lecture_fichier(file_name_in = 'rare_words_lemma.txt')
-
-
-nltk.download('wordnet')
 
 
     
