@@ -7,10 +7,10 @@ from string import punctuation
 import re
 from bs4 import BeautifulSoup
 import nltk
-nltk.download('wordnet')
-from nltk.tokenize import RegexpTokenizer
-from nltk.corpus import stopwords
-from nltk.stem import WordNetLemmatizer, PorterStemmer
+#nltk.download('wordnet')
+#from nltk.tokenize import RegexpTokenizer
+#from nltk.corpus import stopwords
+#from nltk.stem import WordNetLemmatizer, PorterStemmer
 import emoji
 
 from sklearn.feature_extraction.text import CountVectorizer
