@@ -2,8 +2,4 @@ pandas==2.0.3
 numpy==1.24.3
 Flask==2.3.2
 nltk==3.8.1
-bs4==0.0.1
-emoji==2.8.0
 scikit-learn==1.0.2
-gunicorn==21.2.0
-tensorflow-hub==0.14.0

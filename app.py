@@ -8,7 +8,8 @@
 # Maj Procfile : https://medium.com/@gitaumoses4/deploying-a-flask-application-on-heroku-e509e5c76524
 
 
-from flask import Flask, request, url_for, jsonify
+from flask import Flask, request, jsonify
+#from flask import url_for
 
 # Import common functions
 from app_preparation import preparation # fonctions de préparation
