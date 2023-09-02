@@ -16,9 +16,11 @@ import emoji
 from sklearn.feature_extraction.text import CountVectorizer
 #import tensorflow_hub as hub
 
-import gensim
 from tensorflow.keras.preprocessing.text import Tokenizer
 from tensorflow.keras.preprocessing.sequence import pad_sequences
+from tensorflow.keras.layers import *
+from tensorflow.keras.models import Model
+import gensim
 
 
 ###################################################
