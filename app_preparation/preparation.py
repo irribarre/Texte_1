@@ -25,7 +25,7 @@ import gensim
 # Correction bug https://github.com/cvxpy/cvxpy/issues/640
 # from scipy.misc import logsumexp
 # ImportError: cannot import name 'logsumexp' from 'scipy.misc' (/app/.heroku/python/lib/python3.9/site-packages/scipy/misc/__init__.py)
-from scipy.special import logsumexp
+#from scipy.special import logsumexp
 
 
 ###################################################
