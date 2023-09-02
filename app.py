@@ -163,13 +163,13 @@ def endpoint_nltk():
                     'message'  : pred_nltk
                    })    
 
-    
 
+    
 ###############################################
-#                  USE                        #
+#                  Word2Vec                   #
 ###############################################    
-@app.route('/use', methods=['POST'])
-def endpoint_use():
+@app.route('/word2vec', methods=['POST'])
+def endpoint_word2vec():
 
     # Question (clé = 'question', valeur = reçue par l'utilisateur via une requête postman)
     # https://www.digitalocean.com/community/tutorials/processing-incoming-request-data-in-flask-fr    
@@ -177,15 +177,39 @@ def endpoint_use():
     question = request.args['question']
     
     # Préparation données
-    question_use = preparation.preparation_use(question_in = question)
+    question_w2v = preparation.preparation_w2v(question_in = question)
     
     # Prédiction tag  
-    pred_use = prediction.prediction_use(question_in = question_use)
+    pred_w2v = prediction.prediction_w2v(question_in = question_w2v)
    
     # Affichage résultat 
     return jsonify({'status'   : 'ok',
-                    'message'  : pred_use
+                    'message'  : pred_w2v
                    })    
+
+
+
+###############################################
+#                  USE                        #
+###############################################    
+#@app.route('/use', methods=['POST'])
+#def endpoint_use():
+#
+#    # Question (clé = 'question', valeur = reçue par l'utilisateur via une requête postman)
+#    # https://www.digitalocean.com/community/tutorials/processing-incoming-request-data-in-flask-fr    
+##    question = request.params   
+#    question = request.args['question']
+#    
+#    # Préparation données
+#    question_use = preparation.preparation_use(question_in = question)
+#    
+#    # Prédiction tag  
+#    pred_use = prediction.prediction_use(question_in = question_use)
+#   
+#    # Affichage résultat 
+#    return jsonify({'status'   : 'ok',
+#                    'message'  : pred_use
+#                   })    
 
 
 
