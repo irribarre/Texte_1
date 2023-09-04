@@ -8,8 +8,10 @@ import pickle
 ###################################################
 
 C_GOOGLE_DRIVE_PUBLIC__APP_MODELS = 'https://drive.google.com/drive/folders/1tlUxQtNxNlXvcDL7sdJQEuJLv2LfHzbp?usp=drive_link'
+    
+# https://inside-machinelearning.com/charger-fichiers-depuis-un-drive-public-sur-google-colab/
 
-
+    
 ###############################################
 #                  NLTK                       #
 ###############################################    
@@ -66,36 +68,36 @@ def prediction_nltk(question_in):
 #                  Word2Vec                   #
 ###############################################    
 # Prédiction avec Word2Vec
-def prediction_w2v(question_in):
-    
-    # Constantes
-    W2V_MODEL    = "https://drive.google.com/file/d/1AfUXjCoejbSxhHGSblQHxNiGCh5vw_nK/view?usp=sharing"
-    W2V_MODEL_ID = '1AfUXjCoejbSxhHGSblQHxNiGCh5vw_nK'
-        
-    print("prediction_w2v, question_in =", question_in)
-    
-    # Chargement modèle pré-entraîné avec le modèle USE.
-    # https://medium.com/@maziarizadi/pickle-your-model-in-python-2bbe7dba2bbb
-    print('W2V_MODEL =', W2V_MODEL)
-    
-    path = 'https://drive.google.com/uc?export=download&id=' + W2V_MODEL.split('/')[-2]
-    
-    # https://realpython.com/urllib-request/
-    from urllib.request import urlopen
-    response = urlopen(W2V_MODEL)
-    ovr = response.read()
-    response.close()
-    
-    
-    # Making a prediction on the test set
-    # https://github.com/automl/auto-sklearn/issues/849
-    pickle.dump(ovr, open(W2V_MODEL, 'wb'))
-    loaded_model = pickle.load(W2V_MODEL)
-    y_pred = loaded_model.predict(question_in)    
-    y_pred = ovr.predict(question_in)
-    print('y_pred (w2v) =', y_pred)
-    
-    return(y_pred)
+#def prediction_w2v(question_in):
+#    
+#    # Constantes
+#    W2V_MODEL    = "https://drive.google.com/file/d/1AfUXjCoejbSxhHGSblQHxNiGCh5vw_nK/view?usp=sharing"
+#    W2V_MODEL_ID = '1AfUXjCoejbSxhHGSblQHxNiGCh5vw_nK'
+#        
+#    print("prediction_w2v, question_in =", question_in)
+#    
+#    # Chargement modèle pré-entraîné avec le modèle USE.
+#    # https://medium.com/@maziarizadi/pickle-your-model-in-python-2bbe7dba2bbb
+#    print('W2V_MODEL =', W2V_MODEL)
+#    
+#    path = 'https://drive.google.com/uc?export=download&id=' + W2V_MODEL.split('/')[-2]
+#    
+#    # https://realpython.com/urllib-request/
+#    from urllib.request import urlopen
+#    response = urlopen(W2V_MODEL)
+#    ovr = response.read()
+#    response.close()
+#    
+#    
+#    # Making a prediction on the test set
+#    # https://github.com/automl/auto-sklearn/issues/849
+#    pickle.dump(ovr, open(W2V_MODEL, 'wb'))
+#    loaded_model = pickle.load(W2V_MODEL)
+#    y_pred = loaded_model.predict(question_in)    
+#    y_pred = ovr.predict(question_in)
+#    print('y_pred (w2v) =', y_pred)
+#    
+#    return(y_pred)
 
 
 

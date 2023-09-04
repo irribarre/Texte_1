@@ -168,24 +168,24 @@ def endpoint_nltk():
 ###############################################
 #                  Word2Vec                   #
 ###############################################    
-@app.route('/word2vec', methods=['POST'])
-def endpoint_word2vec():
-
-    # Question (clé = 'question', valeur = reçue par l'utilisateur via une requête postman)
-    # https://www.digitalocean.com/community/tutorials/processing-incoming-request-data-in-flask-fr    
-#    question = request.params   
-    question = request.args['question']
-    
-    # Préparation données
-    question_w2v = preparation.preparation_w2v(question_in = question)
-    
-    # Prédiction tag  
-    pred_w2v = prediction.prediction_w2v(question_in = question_w2v)
-   
-    # Affichage résultat 
-    return jsonify({'status'   : 'ok',
-                    'message'  : pred_w2v
-                   })    
+#@app.route('/word2vec', methods=['POST'])
+#def endpoint_word2vec():
+#
+#    # Question (clé = 'question', valeur = reçue par l'utilisateur via une requête postman)
+#    # https://www.digitalocean.com/community/tutorials/processing-incoming-request-data-in-flask-fr    
+##    question = request.params   
+#    question = request.args['question']
+#    
+#    # Préparation données
+#    question_w2v = preparation.preparation_w2v(question_in = question)
+#    
+#    # Prédiction tag  
+#    pred_w2v = prediction.prediction_w2v(question_in = question_w2v)
+#   
+#    # Affichage résultat 
+#    return jsonify({'status'   : 'ok',
+#                    'message'  : pred_w2v
+#                   })    
 
 
 
