@@ -12,6 +12,7 @@ from nltk.tokenize import RegexpTokenizer
 from nltk.stem import WordNetLemmatizer, PorterStemmer
 import emoji
 
+from sklearn.feature_extraction.text import CountVectorizer
 
 
 ###################################################
