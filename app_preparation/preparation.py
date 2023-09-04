@@ -381,123 +381,123 @@ def preparation_nltk(question_in):
 #################################################################################################
 # Fonction de préparation du texte pour le bag of words avec lemmatization                      #
 #################################################################################################
-def transform_bow_lem_fct(question_in):
-    print('\n\n\n')
-    print('@' * 30, ' transform_bow_lem_fct ', '@' * 30)
-    print('transform_bow_lem_fct, question_in =', question_in)
-    
-    word_tokens = tokenizer_fct(desc_text)
-    sw = stop_word_filter_fct(word_tokens)
-    lw = lower_start_fct(sw)
-    lem_w = lemma_fct(lw)    
-    transf_desc_text = ' '.join(lem_w)
-    
-    print('transform_bow_lem_fct, transf_desc_text =', transf_desc_text)
-    
-    return transf_desc_text
-
-
-
+#def transform_bow_lem_fct(question_in):
+#    print('\n\n\n')
+#    print('@' * 30, ' transform_bow_lem_fct ', '@' * 30)
+#    print('transform_bow_lem_fct, question_in =', question_in)
+#    
+#    word_tokens = tokenizer_fct(desc_text)
+#    sw = stop_word_filter_fct(word_tokens)
+#    lw = lower_start_fct(sw)
+#    lem_w = lemma_fct(lw)    
+#    transf_desc_text = ' '.join(lem_w)
+#    
+#    print('transform_bow_lem_fct, transf_desc_text =', transf_desc_text)
+#    
+#    return transf_desc_text
+#
+#
+#
 #################################################################################################
 # Préparation des données avec WORD2VEC : création des features                                 #
 #################################################################################################
-def preparation_w2v(question_in):
-    
-    w2v_size      = 300
-    w2v_window    = 5
-    w2v_min_count = 1
-    w2v_epochs    = 100
-    maxlen        = 200 
-
-    print('\n\n\n')
-    print('@' * 30, ' preparation_w2v ', '@' * 30)
-    print('preparation_w2v, question_in =', question_in)
-
-
-    # Ici on a un seul document (car une seule question).
-    sentences = []
-    sentences.append(transform_bow_lem_fct(question_in = question_in))
-    
-    sentences = [gensim.utils.simple_preprocess(text) for text in sentences]
-    print('preparation_w2v, question_in =', question_in)
-    
-    
-    
-    # Création et entraînement du modèle Word2Vec
-    print('preparation_w2v, Build & train Word2Vec model...')
-    w2v_model = gensim.models.Word2Vec(min_count   = w2v_min_count, 
-                                       window      = w2v_window,
-                                       vector_size = w2v_size,
-                                       seed        = 42,
-                                       workers     = 1) # workers = multiprocessing.cpu_count()
-
-    w2v_model.build_vocab(sentences)
-    w2v_model.train(sentences, 
-                    total_examples = w2v_model.corpus_count, 
-                    epochs         = w2v_epochs)
-    model_vectors = w2v_model.wv
-    w2v_words = model_vectors.index_to_key
-    print('preparation_w2v, Vocabulary size : %i' % len(w2v_words))
-    print('preparation_w2v, Word2Vec trained')
-
-    
-
-    # Préparation des sentences (tokenization)
-    print('preparation_w2v, Fit Tokenizer...')
-    tokenizer = Tokenizer()
-    tokenizer.fit_on_texts(sentences)
-
-    # https://www.tensorflow.org/api_docs/python/tf/keras/utils/pad_sequences
-    x_sentences = pad_sequences(tokenizer.texts_to_sequences(sentences),
-                                maxlen  = maxlen, # Optional Int, maximum length of all sequences. If not provided, 
-                                                  # sequences will be padded to the length of the longest individual sequence.
-                                padding = 'post')
-                                                   
-    num_words = len(tokenizer.word_index) + 1
-    print('preparation_w2v, Number of unique words: %i' % num_words)
-    
-    
-
-    # Création de la matrice d'embedding
-    print('preparation_w2v, Create Embedding matrix...')
-    word_index = tokenizer.word_index
-    vocab_size = len(word_index) + 1
-    embedding_matrix = np.zeros((vocab_size, w2v_size))
-    i = 0
-    j = 0
-    
-    for word, idx in word_index.items():
-        i +=1
-        if word in w2v_words:
-            j +=1
-            embedding_vector = model_vectors[word]
-            if embedding_vector is not None:
-                embedding_matrix[idx] = model_vectors[word]
-            
-    word_rate = np.round(j/i,4)
-    print('preparation_w2v, Word embedding rate :', word_rate)
-    print('preparation_w2v, Embedding matrix : %s' % str(embedding_matrix.shape))
-
-    
-    
-    # Création du modèle
-    input          = Input(shape = (len(x_sentences), maxlen), dtype = 'float64')
-    word_input     = Input(shape = (maxlen,),dtype = 'float64')  
-    word_embedding = Embedding(input_dim    = vocab_size,
-                               output_dim   = w2v_size,
-                               weights      = [embedding_matrix],
-                               input_length = maxlen)(word_input)
-    word_vec       = GlobalAveragePooling1D()(word_embedding)  
-    embed_model    = Model([word_input], word_vec)
-
-    embed_model.summary()
-   
-    embeddings_w2v = embed_model.predict(x_sentences)
-    embeddings_w2v.shape
-
-    print('preparation_w2v, embeddings_w2v.shape =', embeddings_w2v.shape)
-
-    return(embeddings_w2v)
+#def preparation_w2v(question_in):
+#    
+#    w2v_size      = 300
+#    w2v_window    = 5
+#    w2v_min_count = 1
+#    w2v_epochs    = 100
+#    maxlen        = 200 
+#
+#    print('\n\n\n')
+#    print('@' * 30, ' preparation_w2v ', '@' * 30)
+#    print('preparation_w2v, question_in =', question_in)
+#
+#
+#    # Ici on a un seul document (car une seule question).
+#    sentences = []
+#    sentences.append(transform_bow_lem_fct(question_in = question_in))
+#    
+#    sentences = [gensim.utils.simple_preprocess(text) for text in sentences]
+#    print('preparation_w2v, question_in =', question_in)
+#    
+#    
+#    
+#    # Création et entraînement du modèle Word2Vec
+#    print('preparation_w2v, Build & train Word2Vec model...')
+#    w2v_model = gensim.models.Word2Vec(min_count   = w2v_min_count, 
+#                                       window      = w2v_window,
+#                                       vector_size = w2v_size,
+#                                       seed        = 42,
+#                                       workers     = 1) # workers = multiprocessing.cpu_count()
+#
+#    w2v_model.build_vocab(sentences)
+#    w2v_model.train(sentences, 
+#                    total_examples = w2v_model.corpus_count, 
+#                    epochs         = w2v_epochs)
+#    model_vectors = w2v_model.wv
+#    w2v_words = model_vectors.index_to_key
+#    print('preparation_w2v, Vocabulary size : %i' % len(w2v_words))
+#    print('preparation_w2v, Word2Vec trained')
+#
+#    
+#
+#    # Préparation des sentences (tokenization)
+#    print('preparation_w2v, Fit Tokenizer...')
+#    tokenizer = Tokenizer()
+#    tokenizer.fit_on_texts(sentences)
+#
+#    # https://www.tensorflow.org/api_docs/python/tf/keras/utils/pad_sequences
+#    x_sentences = pad_sequences(tokenizer.texts_to_sequences(sentences),
+#                                maxlen  = maxlen, # Optional Int, maximum length of all sequences. If not provided, 
+#                                                  # sequences will be padded to the length of the longest individual sequence.
+#                                padding = 'post')
+#                                                   
+#    num_words = len(tokenizer.word_index) + 1
+#    print('preparation_w2v, Number of unique words: %i' % num_words)
+#    
+#    
+#
+#    # Création de la matrice d'embedding
+#    print('preparation_w2v, Create Embedding matrix...')
+#    word_index = tokenizer.word_index
+#    vocab_size = len(word_index) + 1
+#    embedding_matrix = np.zeros((vocab_size, w2v_size))
+#    i = 0
+#    j = 0
+#    
+#    for word, idx in word_index.items():
+#        i +=1
+#        if word in w2v_words:
+#            j +=1
+#            embedding_vector = model_vectors[word]
+#            if embedding_vector is not None:
+#                embedding_matrix[idx] = model_vectors[word]
+#            
+#    word_rate = np.round(j/i,4)
+#    print('preparation_w2v, Word embedding rate :', word_rate)
+#    print('preparation_w2v, Embedding matrix : %s' % str(embedding_matrix.shape))
+#
+#    
+#    
+#    # Création du modèle
+#    input          = Input(shape = (len(x_sentences), maxlen), dtype = 'float64')
+#    word_input     = Input(shape = (maxlen,),dtype = 'float64')  
+#    word_embedding = Embedding(input_dim    = vocab_size,
+#                               output_dim   = w2v_size,
+#                               weights      = [embedding_matrix],
+#                               input_length = maxlen)(word_input)
+#    word_vec       = GlobalAveragePooling1D()(word_embedding)  
+#    embed_model    = Model([word_input], word_vec)
+#
+#    embed_model.summary()
+#   
+#    embeddings_w2v = embed_model.predict(x_sentences)
+#    embeddings_w2v.shape
+#
+#    print('preparation_w2v, embeddings_w2v.shape =', embeddings_w2v.shape)
+#
+#    return(embeddings_w2v)
 
 
 
