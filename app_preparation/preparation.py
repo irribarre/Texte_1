@@ -7,6 +7,7 @@ from string import punctuation
 import re
 from bs4 import BeautifulSoup
 import nltk
+nltk.download('wordnet')
 from nltk.tokenize import RegexpTokenizer
 from nltk.stem import WordNetLemmatizer, PorterStemmer
 import emoji
