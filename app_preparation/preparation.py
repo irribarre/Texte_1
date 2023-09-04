@@ -13,20 +13,20 @@ from nltk.stem import WordNetLemmatizer, PorterStemmer
 #nltk.download('wordnet')
 import emoji
 
-from sklearn.feature_extraction.text import CountVectorizer
-#import tensorflow_hub as hub
-
-from tensorflow.keras.preprocessing.text import Tokenizer
-from tensorflow.keras.preprocessing.sequence import pad_sequences
-from tensorflow.keras.layers import *
-from tensorflow.keras.models import Model
-import gensim
+#from sklearn.feature_extraction.text import CountVectorizer
+##import tensorflow_hub as hub
+#
+#from tensorflow.keras.preprocessing.text import Tokenizer
+#from tensorflow.keras.preprocessing.sequence import pad_sequences
+#from tensorflow.keras.layers import *
+#from tensorflow.keras.models import Model
+#import gensim
 
 # Correction bug https://github.com/cvxpy/cvxpy/issues/640
 # from scipy.misc import logsumexp
 # ImportError: cannot import name 'logsumexp' from 'scipy.misc' (/app/.heroku/python/lib/python3.9/site-packages/scipy/misc/__init__.py)
-#from scipy.special import logsumexp
-from scipy.misc import logsumexp
+##from scipy.special import logsumexp
+#from scipy.misc import logsumexp
 
 ###################################################
 #             PREPARATION DES DONNEES             #
