@@ -4,7 +4,7 @@ import pandas as pd
 import numpy as np
 
 #from string import punctuation
-#import re
+import re
 from bs4 import BeautifulSoup
 #import nltk
 #from nltk.tokenize import RegexpTokenizer
