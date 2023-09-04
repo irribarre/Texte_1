@@ -9,7 +9,7 @@
 
 
 from flask import Flask, request, jsonify
-#from flask import url_for
+
 
 # Import common functions
 from app_preparation import preparation # fonctions de préparation
@@ -29,60 +29,6 @@ def accueil():
     texte = "Bonjour,<br/><br/>La prédiction du tag se trouve sur le endPoint de la méthode utilisée (NLTK / USE).<br/><br/><br/>Merci de vous rendre sur le endPoint choisi pour saisir votre question :<br/><br/>1) Méthode NLTK -------> endPoint <b>/nltk</b>.<br/>2) Méthode USE  ---------> endPoint <b>/use</b>."    
     return texte
 
-
-
-###############################################
-#                  Question                   #
-###############################################    
-# handle a POST request
-#@app.route('/question', methods=['POST'])
-#def endpoint_question():
-#
-##    data = question_python_1
-#    data = request.form
-#
-#    # handle the POST request
-#    language = request.form.get('question')
-#    framework = request.form.get('framework')
-#    return '''<h1>The language value is: {}</h1>
-#              <h1>The framework value is: {}</h1>'''.format(language, framework)
-##               <h1>The language value is: {}</h1>'''.format(question)
-#    
-#    # Traiter la requête
-#    return data
-#
-# https://www.digitalocean.com/community/tutorials/processing-incoming-request-data-in-flask-fr
-# allow both GET and POST requests
-#@app.route('/form-example', methods=['GET', 'POST'])
-#def form_example():
-#    # handle the POST request
-#    if request.method == 'POST':
-#        question = request.form.get('question')
-#        algorithme = request.form.get('algorithme (NLTK / USE)')
-#        
-#        
-#        # Préparation données
-#        question_nltk = preparation.preparation_nltk(question_in = question)
-#    
-#        # Prédiction tag  
-#        pred_nltk = prediction.prediction_nltk(question_in = question_nltk)
-#    
-##        return '''
-##                  <h1>La question est : {}</h1>
-##                  <h1>L'algorithme est : {}</h1>'''.format(question, pred_nltk)
-#        # Affichage résultat 
-#        return jsonify({'status'   : 'ok',
-#                        'message'  : pred_nltk
-#                       })    
-#    
-#    
-#    # otherwise handle the GET request
-#    return '''
-#           <form method="POST">
-#               <div><label>Question: <input type="text" name="question"></label></div>
-#               <div><label>Algorithme: <input type="text" name="algorithme"></label></div>
-#               <input type="submit" value="Submit">
-#           </form>'''
 
 
 # https://www.digitalocean.com/community/tutorials/processing-incoming-request-data-in-flask-fr
@@ -141,6 +87,7 @@ def json_example():
            The boolean value is: {}'''.format(language, framework, python_version, example, boolean_test)
 
 
+
 ###############################################
 #                  NLTK                       #
 ###############################################    
@@ -165,53 +112,6 @@ def endpoint_nltk():
 
 
     
-###############################################
-#                  Word2Vec                   #
-###############################################    
-#@app.route('/word2vec', methods=['POST'])
-#def endpoint_word2vec():
-#
-#    # Question (clé = 'question', valeur = reçue par l'utilisateur via une requête postman)
-#    # https://www.digitalocean.com/community/tutorials/processing-incoming-request-data-in-flask-fr    
-##    question = request.params   
-#    question = request.args['question']
-#    
-#    # Préparation données
-#    question_w2v = preparation.preparation_w2v(question_in = question)
-#    
-#    # Prédiction tag  
-#    pred_w2v = prediction.prediction_w2v(question_in = question_w2v)
-#   
-#    # Affichage résultat 
-#    return jsonify({'status'   : 'ok',
-#                    'message'  : pred_w2v
-#                   })    
-
-
-
-###############################################
-#                  USE                        #
-###############################################    
-#@app.route('/use', methods=['POST'])
-#def endpoint_use():
-#
-#    # Question (clé = 'question', valeur = reçue par l'utilisateur via une requête postman)
-#    # https://www.digitalocean.com/community/tutorials/processing-incoming-request-data-in-flask-fr    
-##    question = request.params   
-#    question = request.args['question']
-#    
-#    # Préparation données
-#    question_use = preparation.preparation_use(question_in = question)
-#    
-#    # Prédiction tag  
-#    pred_use = prediction.prediction_use(question_in = question_use)
-#   
-#    # Affichage résultat 
-#    return jsonify({'status'   : 'ok',
-#                    'message'  : pred_use
-#                   })    
-
-
 
 if __name__ == "__main__":
     app.run(debug=True)    
