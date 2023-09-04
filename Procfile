@@ -1,1 +1,1 @@
-web: gunicorn app:app -p $PORT --max-requests 1200
+web: gunicorn app:app -p $PORT --preload --max-requests 10
