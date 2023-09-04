@@ -5,7 +5,7 @@ import numpy as np
 
 #from string import punctuation
 #import re
-#from bs4 import BeautifulSoup
+from bs4 import BeautifulSoup
 #import nltk
 #from nltk.tokenize import RegexpTokenizer
 #from nltk.stem import WordNetLemmatizer, PorterStemmer
