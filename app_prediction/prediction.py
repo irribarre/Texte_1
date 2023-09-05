@@ -51,7 +51,7 @@ def prediction_nltk(question_in):
 #    from urllib.request import urlopen
 #    loaded_model = cp.load(urlopen(dwn_url, 'rb'))
 
-    filename = dwn_url + 'MODEL_NAME'
+    filename = dwn_url + '/MODEL_NAME'
     print('prediction_nltk, filename =', filename)
     
     # Making a prediction on the test set
