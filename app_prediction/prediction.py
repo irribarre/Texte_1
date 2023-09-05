@@ -21,6 +21,8 @@ def prediction_nltk(question_in):
         
     # Constantes
     # https://stackoverflow.com/questions/64047288/read-a-csv-file-stored-in-google-drive
+    nltk_url = 'https://drive.google.com/file/d/1A_GKp8gTMcp9zRa-Zw0Fyjq6A5ECQ2aq/view?usp=drive_link'
+    
     orig_url = 'https://drive.google.com/file/d/1A_GKp8gTMcp9zRa-Zw0Fyjq6A5ECQ2aq/view?usp=sharing'
     file_id  = orig_url.split('/')[-2]
     dwn_url  = 'https://drive.google.com/uc?export=download&id=' + file_id    
@@ -52,7 +54,8 @@ def prediction_nltk(question_in):
 #    loaded_model = cp.load(urlopen(dwn_url, 'rb'))
 
 #    filename = dwn_url + '/'+ NLTK_MODEL_NAME
-    filename = dwn_url
+#    filename = dwn_url
+    filename = nltk_url
     print('prediction_nltk, filename =', filename)
     
     # Making a prediction on the test set
