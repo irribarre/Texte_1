@@ -49,8 +49,8 @@ def prediction_nltk(question_in):
     
     # Making a prediction on the test set
     # https://github.com/automl/auto-sklearn/issues/849
-    pickle.dump(ovr, open(NLTK_MODEL, 'wb'))
-    loaded_model = pickle.load(NLTK_MODEL)
+    pickle.dump(ovr, open(dfs, 'wb'))
+    loaded_model = pickle.load(dfs)
     y_pred = loaded_model.predict(question_in)
 #    y_pred = ovr.predict(question_in)
     
