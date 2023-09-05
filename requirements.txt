@@ -9,3 +9,4 @@ emoji==2.8.0
 tensorflow-cpu==2.13.0
 gensim==2.1.0
 scipy==1.9.1
+cloudpickle==2.0.0
