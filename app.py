@@ -128,11 +128,11 @@ def json_example():
 def endpoint_nltk():
     # We use 'force' to skip mimetype checking to have shorter curl command.
     data = request.get_json(force=True)
-    print('increment_value, data =', data)
+    print('endpoint_nltk, data =', data)
        
     try:
         question = int(data['question'])
-        print('increment_value, question =', question)        
+        print('endpoint_nltk, question =', question)        
            
         # Préparation données
         question_nltk = preparation.preparation_nltk(question_in = question)
