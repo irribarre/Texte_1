@@ -131,7 +131,7 @@ def endpoint_nltk():
     print('endpoint_nltk, data =', data)
        
     try:
-        question = int(data['question'])
+        question = data['question']
         print('endpoint_nltk, question =', question)        
            
         # Préparation données
