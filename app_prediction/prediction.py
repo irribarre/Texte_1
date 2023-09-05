@@ -30,27 +30,29 @@ def prediction_nltk(question_in):
     print("prediction_nltk, file_id =", file_id)
     print("prediction_nltk, dwn_url =", dwn_url)        
     
-    url = requests.get(dwn_url).text
-    csv_raw = StringIO(url)
-#    dfs = pd.read_csv(csv_raw)
+#    url = requests.get(dwn_url).text
+#    csv_raw = StringIO(url)
+##    dfs = pd.read_csv(csv_raw)
 
     # Chargement modèle pré-entraîné avec le modèle USE.
     # https://medium.com/@maziarizadi/pickle-your-model-in-python-2bbe7dba2bbb
     # https://machinelearningmastery.com/save-load-machine-learning-models-python-scikit-learn/
     # https://stackoverflow.com/questions/56611698/pandas-how-to-read-csv-file-from-google-drive-public    
-
+    # https://stackoverflow.com/questions/50624042/how-to-unpickle-a-file-that-has-been-hosted-in-a-web-url-in-python
+    
     # https://realpython.com/urllib-request/
 #    from urllib.request import urlopen
 #    response = urlopen(NLTK_MODEL)
 #    ovr = response.read()
 #    response.close()
 
+    from urllib.request import urlopen
+    loaded_model = cp.load(urlopen(dwn_url, 'rb'))
 
-    
     # Making a prediction on the test set
     # https://github.com/automl/auto-sklearn/issues/849
-    pickle.dump(ovr, open(dfs, 'wb'))
-    loaded_model = pickle.load(dfs)
+#    pickle.dump(ovr, open(filename, 'wb'))
+#    loaded_model = pickle.load(filename)
     y_pred = loaded_model.predict(question_in)
 #    y_pred = ovr.predict(question_in)
     
