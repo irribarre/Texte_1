@@ -57,16 +57,3 @@ def prediction_nltk(question_in):
     print('y_pred (NLTK) =', y_pred)
     
     return(y_pred)
-
-===================================
-mport pandas as pd
-import requests
-
-
-orig_url='https://drive.google.com/file/d/0B6GhBwm5vaB2ekdlZW5WZnppb28/view?usp=sharing'
-
-file_id = orig_url.split('/')[-2]
-dwn_url='https://drive.google.com/uc?export=download&id=' + file_id
-url = requests.get(dwn_url).text
-csv_raw = StringIO(url)
-dfs = pd.read_csv(csv_raw)
