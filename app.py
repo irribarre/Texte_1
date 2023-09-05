@@ -10,6 +10,7 @@
 #  --> https://devcenter.heroku.com/articles/python-gunicorn
 
 from flask import Flask, request, jsonify
+from flask_json import FlaskJSON, JsonError, json_response, as_json
 
 
 # Import common functions
@@ -18,7 +19,10 @@ from app_prediction import prediction # fonctions de prédiction
 
 
 app = Flask(__name__)
+json = FlaskJSON(app)
 
+
+json.init_app(app)
 
 
 ###############################################
@@ -92,27 +96,55 @@ def json_example():
 ###############################################
 #                  NLTK                       #
 ###############################################    
+#@app.route('/nltk', methods=['POST'])
+#def endpoint_nltk():
+#    
+#    print('endpoint_nltk')
+#    
+#    # Question (clé = 'question', valeur = reçue par l'utilisateur via une requête postman)
+#    # https://www.digitalocean.com/community/tutorials/processing-incoming-request-data-in-flask-fr    
+##    question = request.params   
+#    question = request.args['question']
+#    print('endpoint_nltk, question =', question)
+#    
+#    # Préparation données
+#    question_nltk = preparation.preparation_nltk(question_in = question)
+#    print('endpoint_nltk, question_nltk =', question_nltk)
+#    
+#    # Prédiction tag  
+#    pred_nltk = prediction.prediction_nltk(question_in = question_nltk)
+#    print('endpoint_nltk, pred_nltk =', pred_nltk)
+#    
+#    # Affichage résultat 
+#    return jsonify({'status'   : 'ok',
+#                    'message'  : pred_nltk
+#                   })    
+
+# https://flask-json.readthedocs.io/en/latest/#examples
 @app.route('/nltk', methods=['POST'])
 def endpoint_nltk():
+    # We use 'force' to skip mimetype checking to have shorter curl command.
+    data = request.get_json(force=True)
+    print('increment_value, data =', data)
+       
+    try:
+        value = int(data['value'])
+        print('increment_value, value =', value)        
+           
+        # Préparation données
+        question_nltk = preparation.preparation_nltk(question_in = value)
+        print('endpoint_nltk, question_nltk =', question_nltk)
     
-    # Question (clé = 'question', valeur = reçue par l'utilisateur via une requête postman)
-    # https://www.digitalocean.com/community/tutorials/processing-incoming-request-data-in-flask-fr    
-#    question = request.params   
-    question = request.args['question']
-
-    # Préparation données
-    question_nltk = preparation.preparation_nltk(question_in = question)
+        # Prédiction tag  
+        pred_nltk = prediction.prediction_nltk(question_in = question_nltk)
+        print('endpoint_nltk, pred_nltk =', pred_nltk)
     
-    # Prédiction tag  
-    pred_nltk = prediction.prediction_nltk(question_in = question_nltk)
-   
-    # Affichage résultat 
-    return jsonify({'status'   : 'ok',
-                    'message'  : pred_nltk
-                   })    
+       
+    except (KeyError, TypeError, ValueError):
+        raise JsonError(description = 'Invalid value.')
+    return json_response(value = value + 1)
 
 
-    
 
 if __name__ == "__main__":
     app.run(debug=True)    

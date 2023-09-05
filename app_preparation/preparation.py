@@ -5,7 +5,7 @@ import numpy as np
 
 from string import punctuation
 import re
-from bs4 import BeautifulSoup
+#from bs4 import BeautifulSoup
 import nltk
 nltk.download('wordnet')
 from nltk.tokenize import RegexpTokenizer
@@ -70,20 +70,20 @@ def cleaning_chaine(texte_in):
     print('cleaning_chaine, texte_in =', texte_in)
         
         
-    # Suppression des balises HTML
-    soup = BeautifulSoup(texte_in, "html.parser")
-    soup_text = soup.get_text()
-    print('cleaning_chaine, soup_text =', soup_text)
+#    # Suppression des balises HTML
+#    soup = BeautifulSoup(texte_in, "html.parser")
+#    soup_text = soup.get_text()
+#    print('cleaning_chaine, soup_text =', soup_text)
 
     
     # Passage en minuscules
-    soup_text_min = soup_text.lower()
-    print('cleaning_chaine, soup_text_min =', soup_text_min)
+    texte_in_min = texte_in.lower()
+    print('cleaning_chaine, texte_in_min =', texte_in_min)
 
     
     # Suppression ponctuation (remplacement par un caractère blanc)
     # Ponctuation =  !"#$%&'()*+,-./:;<=>?@[\]^_`{|}~ 
-    doc_sans_ponctuation = re.sub(f"[{re.escape(punctuation)}]", " ", soup_text_min)
+    doc_sans_ponctuation = re.sub(f"[{re.escape(punctuation)}]", " ", texte_in_min)
     print('cleaning_chaine, doc_sans_ponctuation =', doc_sans_ponctuation)
     
     
