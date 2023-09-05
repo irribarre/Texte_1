@@ -46,6 +46,7 @@ def prediction_nltk(question_in):
 #    ovr = response.read()
 #    response.close()
 
+    import cloudpickle as cp
     from urllib.request import urlopen
     loaded_model = cp.load(urlopen(dwn_url, 'rb'))
 
