@@ -141,7 +141,6 @@ def endpoint_nltk():
         # Prédiction tag  
         pred_nltk = prediction.prediction_nltk(question_in = question_nltk)
         print('endpoint_nltk, pred_nltk =', pred_nltk)
-    json_response
        
     except (KeyError, TypeError, ValueError):
         raise JsonError(description = 'Invalid value.')
