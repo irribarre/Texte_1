@@ -120,7 +120,10 @@ def json_example():
 #                    'message'  : pred_nltk
 #                   })    
 
+
+
 # https://flask-json.readthedocs.io/en/latest/#examples
+# https://github.com/skozlovf/flask-json/blob/master/examples/example2.py
 @app.route('/nltk', methods=['POST'])
 def endpoint_nltk():
     # We use 'force' to skip mimetype checking to have shorter curl command.
@@ -128,17 +131,17 @@ def endpoint_nltk():
     print('increment_value, data =', data)
        
     try:
-        value = int(data['value'])
-        print('increment_value, value =', value)        
+        question = int(data['question'])
+        print('increment_value, question =', question)        
            
         # Préparation données
-        question_nltk = preparation.preparation_nltk(question_in = value)
+        question_nltk = preparation.preparation_nltk(question_in = question)
         print('endpoint_nltk, question_nltk =', question_nltk)
     
         # Prédiction tag  
         pred_nltk = prediction.prediction_nltk(question_in = question_nltk)
         print('endpoint_nltk, pred_nltk =', pred_nltk)
-    
+    json_response
        
     except (KeyError, TypeError, ValueError):
         raise JsonError(description = 'Invalid value.')
