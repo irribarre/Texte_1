@@ -67,10 +67,12 @@ def prediction_nltk(question_in):
     # https://github.com/automl/auto-sklearn/issues/849
 #    pickle.dump(ovr, open(filename, 'wb'))
 
-    file = open(dwn_url, 'rb')
-    print('prediction_nltk, filename =', file)
+    loaded_model = pd.read_pickle(r'https://drive.google.com/uc?id=1A_GKp8gTMcp9zRa-Zw0Fyjq6A5ECQ2aq')    
     
-    loaded_model = pickle.load(file)
+#    file = open(dwn_url, 'rb')
+#    print('prediction_nltk, filename =', file)
+    
+#    loaded_model = pickle.load(file)
 #    loaded_model = pickle.load(open(filename, 'rb'))
     y_pred = loaded_model.predict(question_in)
 #    y_pred = ovr.predict(question_in)
