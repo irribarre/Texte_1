@@ -21,18 +21,24 @@ def prediction_nltk(question_in):
         
     # Constantes
     # https://stackoverflow.com/questions/64047288/read-a-csv-file-stored-in-google-drive
+    
     nltk_url = 'https://drive.google.com/file/d/1A_GKp8gTMcp9zRa-Zw0Fyjq6A5ECQ2aq/view?usp=drive_link'
     
-    orig_url = 'https://drive.google.com/file/d/1A_GKp8gTMcp9zRa-Zw0Fyjq6A5ECQ2aq/view?usp=sharing'
-    file_id  = orig_url.split('/')[-2]
+#    orig_url = 'https://drive.google.com/file/d/1A_GKp8gTMcp9zRa-Zw0Fyjq6A5ECQ2aq/view?usp=sharing'
+#    file_id  = orig_url.split('/')[-2]
+    file_id  = nltk_url.split('/')[-2]    
     dwn_url  = 'https://drive.google.com/uc?export=download&id=' + file_id    
 #    NLTK_MODEL_ID = '1A_GKp8gTMcp9zRa-Zw0Fyjq6A5ECQ2aq'
     NLTK_MODEL_NAME = 'model_RandomForestClassifier_NLTK_stemmer.pkl'
     
-    print("prediction_nltk, orig_url =", orig_url)
+    print("prediction_nltk, nltk_url =", nltk_url)
     print("prediction_nltk, file_id =", file_id)
     print("prediction_nltk, dwn_url =", dwn_url)        
     
+# https://stackoverflow.com/questions/56611698/pandas-how-to-read-csv-file-from-google-drive-public    
+#url = 'https://drive.google.com/uc?id=0B6GhBwm5vaB2ekdlZW5WZnppb28'
+#dfs = pd.read_csv(url)
+
 #    url = requests.get(dwn_url).text
 #    csv_raw = StringIO(url)
 ##    dfs = pd.read_csv(csv_raw)
@@ -55,7 +61,7 @@ def prediction_nltk(question_in):
 
 #    filename = dwn_url + '/'+ NLTK_MODEL_NAME
 #    filename = dwn_url
-    filename = nltk_url
+    filename = dwn_url
     print('prediction_nltk, filename =', filename)
     
     # Making a prediction on the test set
