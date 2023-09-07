@@ -27,7 +27,8 @@ def prediction_nltk(question_in):
 #    orig_url = 'https://drive.google.com/file/d/1A_GKp8gTMcp9zRa-Zw0Fyjq6A5ECQ2aq/view?usp=sharing'
 #    file_id  = orig_url.split('/')[-2]
     file_id  = nltk_url.split('/')[-2]    
-    dwn_url  = 'https://drive.google.com/uc?export=download&id=' + file_id    
+#    dwn_url  = 'https://drive.google.com/uc?export=download&id=' + file_id    
+    dwn_url  = 'https://drive.google.com/uc?id=' + file_id        
 #    NLTK_MODEL_ID = '1A_GKp8gTMcp9zRa-Zw0Fyjq6A5ECQ2aq'
     NLTK_MODEL_NAME = 'model_RandomForestClassifier_NLTK_stemmer.pkl'
     
@@ -61,17 +62,19 @@ def prediction_nltk(question_in):
 
 #    filename = dwn_url + '/'+ NLTK_MODEL_NAME
 #    filename = dwn_url
-    filename = dwn_url
-    print('prediction_nltk, filename =', filename)
     
     # Making a prediction on the test set
     # https://github.com/automl/auto-sklearn/issues/849
 #    pickle.dump(ovr, open(filename, 'wb'))
-    loaded_model = pickle.load(open(filename, 'wb'))
+
+    file = open(dwn_url, 'rb')
+    print('prediction_nltk, filename =', file)
+    
+    loaded_model = pickle.load(file)
+#    loaded_model = pickle.load(open(filename, 'rb'))
     y_pred = loaded_model.predict(question_in)
 #    y_pred = ovr.predict(question_in)
     
     print('y_pred (NLTK) =', y_pred)
     
     return(y_pred)
-
