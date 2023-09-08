@@ -13,9 +13,9 @@ import pickle
 #                  NLTK                       #
 ###############################################    
 # Prédiction avec NLTK
-def prediction_nltk(question_in):
+def prediction_nltk(df_question_in):
     
-    print("prediction_nltk, question_in =", question_in)
+    print("prediction_nltk, df_question_in =", df_question_in)
             
     NLTK_MODEL_NAME = './app_models/model_LinearSVC_NLTK_stemmer.pkl'
     print("prediction_nltk, NLTK_MODEL_NAME =", NLTK_MODEL_NAME)
@@ -23,7 +23,7 @@ def prediction_nltk(question_in):
     # Loading model to compare the results
     # https://medium.com/@maziarizadi/pickle-your-model-in-python-2bbe7dba2bbb
     loaded_model = pickle.load(open(NLTK_MODEL_NAME, 'rb'))
-    y_pred = loaded_model.predict(question_in)
+    y_pred = loaded_model.predict(df_question_in)
     
     print('y_pred (NLTK) =', y_pred)
     

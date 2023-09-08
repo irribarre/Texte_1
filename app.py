@@ -135,11 +135,11 @@ def endpoint_nltk():
         print('endpoint_nltk, question =', question)        
            
         # Préparation données
-        question_nltk = preparation.preparation_nltk(question_in = question)
-        print('endpoint_nltk, question_nltk =', question_nltk)
+        df_question_nltk = preparation.preparation_nltk(question_in = question)
+        print('endpoint_nltk, df_question_nltk =', df_question_nltk)
     
         # Prédiction tag  
-        pred_nltk = prediction.prediction_nltk(question_in = question_nltk)
+        pred_nltk = prediction.prediction_nltk(df_question_in = df_question_nltk)
         print('endpoint_nltk, pred_nltk =', pred_nltk)
        
     except (KeyError, TypeError, ValueError):

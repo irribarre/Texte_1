@@ -355,6 +355,7 @@ def preparation_nltk(question_in):
     df_stemmer = pd.DataFrame(dtm_stemmer.toarray(), columns = vect_stemmer.get_feature_names())
     print('preparation_nltk, df_stemmer.columns =', df_stemmer.columns)
     print('preparation_nltk, df_stemmer.shape =', df_stemmer.shape)
+    print('preparation_nltk, df_stemmer =\n', df_stemmer)    
     
     return(df_stemmer)
 
