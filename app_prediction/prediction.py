@@ -28,7 +28,7 @@ def prediction_nltk(df_question_in):
     print('prediction_nltk, df_stemmer_columns =\n', df_stemmer_columns)
     
     # Boucle sur les colonnes
-    # https://stacklima.com/boucle-ou-iteration-sur-tout-ou-certaines-colonnes-dun-dataframe-dans-python-pandas/
+    # https://stacklima.com/boucle-ou-iteration-sur-tout-ou-certaines-colonnes-dun-dataframe-dans-python-pandas/   
     for (column_name, column_data) in df_stemmer_columns.iteritems():
         if column_name in df_question_in.columns:
             df_stemmer_columns[column_name] = df_question_in[column_name]
@@ -40,8 +40,8 @@ def prediction_nltk(df_question_in):
     # Vérification mise à jour : affichage des colonnes non vides
     print('prediction_nltk, df_stemmer_columns.shape =', df_stemmer_columns.shape)
     for (column_name, column_data) in df_stemmer_columns.iteritems():
-        if (columnData.values != 0):
-            print('colonne', column_name, '=', columnData.values)
+        if (column_data.values != 0):
+            print('colonne', column_name, '=', column_data.values)
         
     
     # Loading model to compare the results
