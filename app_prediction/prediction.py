@@ -23,7 +23,7 @@ def prediction_nltk(df_question_in):
     
     
     # Intégration df_question_in dans les colonnes des données entraînées
-    df_stemmer_columns = pd.read_csv('df_stemmer_columns.csv', sep = '\t')
+    df_stemmer_columns = pd.read_csv('./app_prediction/df_stemmer_columns.csv', sep = '\t')
     print('prediction_nltk, df_stemmer_columns.shape =', df_stemmer_columns.shape)
     print('prediction_nltk, df_stemmer_columns =\n', df_stemmer_columns)
     
