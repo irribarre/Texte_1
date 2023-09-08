@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import pickle
+import pandas as pd
 
 
 ###################################################
