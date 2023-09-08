@@ -136,7 +136,7 @@ def endpoint_nltk():
            
         # Préparation données
         df_question_nltk = preparation.preparation_nltk(question_in = question)
-        print('endpoint_nltk, df_question_nltk =', df_question_nltk)
+        print('endpoint_nltk, df_question_nltk =\n', df_question_nltk)
     
         # Prédiction tag  
         pred_nltk = prediction.prediction_nltk(df_question_in = df_question_nltk)

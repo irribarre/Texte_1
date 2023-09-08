@@ -15,7 +15,7 @@ import pickle
 # Prédiction avec NLTK
 def prediction_nltk(df_question_in):
     
-    print("prediction_nltk, df_question_in =", df_question_in)
+    print("prediction_nltk, df_question_in =\n", df_question_in)
             
     NLTK_MODEL_NAME = './app_models/model_LinearSVC_NLTK_stemmer.pkl'
     print("prediction_nltk, NLTK_MODEL_NAME =", NLTK_MODEL_NAME)
