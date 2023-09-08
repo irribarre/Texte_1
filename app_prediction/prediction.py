@@ -48,7 +48,7 @@ def prediction_nltk(df_question_in):
     loaded_model = pickle.load(open(NLTK_MODEL_NAME, 'rb'))
     print('prediction_nltk, loaded_model')
         
-    y_pred = loaded_model.predict(df_question_in !!!!)
+    y_pred = loaded_model.predict(df_stemmer_columns)
     
     print('y_pred (NLTK) =', y_pred)
     
