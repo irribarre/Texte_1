@@ -35,7 +35,7 @@ def prediction_nltk(df_question_in):
             print('Column name\t:', column_name)
             print('Column value\t:', df_stemmer_columns[column_name]) 
         else:
-            df_stemmer_columns[columnName] = 0
+            df_stemmer_columns[column_name] = 0
    
     # Vérification mise à jour : affichage des colonnes non vides
     print('prediction_nltk, df_stemmer_columns.shape =', df_stemmer_columns.shape)
