@@ -23,6 +23,8 @@ def prediction_nltk(df_question_in):
     # Loading model to compare the results
     # https://medium.com/@maziarizadi/pickle-your-model-in-python-2bbe7dba2bbb
     loaded_model = pickle.load(open(NLTK_MODEL_NAME, 'rb'))
+    print("prediction_nltk, loaded_model")
+        
     y_pred = loaded_model.predict(df_question_in)
     
     print('y_pred (NLTK) =', y_pred)

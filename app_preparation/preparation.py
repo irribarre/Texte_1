@@ -348,7 +348,7 @@ def preparation_nltk(question_in):
 
     # DTM (Document Term Matrix) : le corpus se répartit sur différentes features
     dtm_stemmer = vect_stemmer.transform(corpus_liste_doc_stemmer)
-    print('preparation_nltk, dtm_stemmer =', dtm_stemmer)    
+    print('preparation_nltk, dtm_stemmer =\n', dtm_stemmer)    
 
 
     # Conversion spare matrix --> dense matrix (pour gagner de la place)
