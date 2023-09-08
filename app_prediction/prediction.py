@@ -29,19 +29,20 @@ def prediction_nltk(df_question_in):
     
     # Boucle sur les colonnes
     # https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.items.html   
+    ind_ligne = 0 # initialisation de la ligne correspondant à la question écrit depuis postman.
+    
     for (column_name, column_data) in df_stemmer_columns.items():
         if column_name in df_question_in.columns:
-            df_stemmer_columns[column_name] = df_question_in[column_name]
-            print('Column name\t:', column_name)
-            print('Column value\t:', df_stemmer_columns[column_name]) 
+            df_stemmer_columns.loc[ind_ligne, column_name] = df_question_in[column_name]
+            print('colonne :', column_name, '\t-->', df_stemmer_columns[column_name].value) 
         else:
-            df_stemmer_columns[column_name] = 0
+            df_stemmer_columns.loc[ind_ligne, column_name] = 0
    
     # Vérification mise à jour : affichage des colonnes non vides
     print('prediction_nltk, df_stemmer_columns.shape =', df_stemmer_columns.shape)
     for (column_name, column_data) in df_stemmer_columns.items():
         if (column_data.values != 0):
-            print('colonne', column_name, '=', column_data.values)
+            print('colonne', column_name, '\t=', column_data.values)
         
     
     # Loading model to compare the results
