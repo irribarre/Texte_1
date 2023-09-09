@@ -15,7 +15,7 @@ from flask_json import FlaskJSON, JsonError, json_response, as_json
 
 # Import common functions
 from app_preparation import preparation # fonctions de préparation
-from app_prediction import prediction # fonctions de prédiction
+from app_prediction import prediction   # fonctions de prédiction
 
 
 app = Flask(__name__)
@@ -23,6 +23,8 @@ json = FlaskJSON(app)
 
 
 json.init_app(app)
+
+
 
 
 ###############################################
@@ -36,98 +38,17 @@ def accueil():
 
 
 
-# https://www.digitalocean.com/community/tutorials/processing-incoming-request-data-in-flask-fr
-@app.route('/query-example')
-def query_example():
-    # if key doesn't exist, returns None
-    language = request.args.get('language')
-
-    # if key doesn't exist, returns a 400, bad request error
-    framework = request.args['framework']
-
-    # if key doesn't exist, returns None
-    website = request.args.get('website')
-
-    return '''
-              <h1>The language value is: {}</h1>
-              <h1>The framework value is: {}</h1>
-              <h1>The website value is: {}'''.format(language, framework, website)
-
-
-# https://www.digitalocean.com/community/tutorials/processing-incoming-request-data-in-flask-fr
-# GET requests will be blocked
-@app.route('/json-example', methods=['POST'])
-def json_example():
-    request_data = request.get_json()
-
-    language = None
-    framework = None
-    python_version = None
-    example = None
-    boolean_test = None
-
-    if request_data:
-        if 'language' in request_data:
-            language = request_data['language']
-
-        if 'framework' in request_data:
-            framework = request_data['framework']
-
-        if 'version_info' in request_data:
-            if 'python' in request_data['version_info']:
-                python_version = request_data['version_info']['python']
-
-        if 'examples' in request_data:
-            if (type(request_data['examples']) == list) and (len(request_data['examples']) > 0):
-                example = request_data['examples'][0]
-
-        if 'boolean_test' in request_data:
-            boolean_test = request_data['boolean_test']
-
-    return '''
-           The language value is: {}
-           The framework value is: {}
-           The Python version is: {}
-           The item at index 0 in the example list is: {}
-           The boolean value is: {}'''.format(language, framework, python_version, example, boolean_test)
-
-
 
 ###############################################
 #                  NLTK                       #
 ###############################################    
-#@app.route('/nltk', methods=['POST'])
-#def endpoint_nltk():
-#    
-#    print('endpoint_nltk')
-#    
-#    # Question (clé = 'question', valeur = reçue par l'utilisateur via une requête postman)
-#    # https://www.digitalocean.com/community/tutorials/processing-incoming-request-data-in-flask-fr    
-##    question = request.params   
-#    question = request.args['question']
-#    print('endpoint_nltk, question =', question)
-#    
-#    # Préparation données
-#    question_nltk = preparation.preparation_nltk(question_in = question)
-#    print('endpoint_nltk, question_nltk =', question_nltk)
-#    
-#    # Prédiction tag  
-#    pred_nltk = prediction.prediction_nltk(question_in = question_nltk)
-#    print('endpoint_nltk, pred_nltk =', pred_nltk)
-#    
-#    # Affichage résultat 
-#    return jsonify({'status'   : 'ok',
-#                    'message'  : pred_nltk
-#                   })    
-
-
-
+# https://www.digitalocean.com/community/tutorials/processing-incoming-request-data-in-flask-fr
 # https://flask-json.readthedocs.io/en/latest/#examples
 # https://github.com/skozlovf/flask-json/blob/master/examples/example2.py
-@app.route('/nltk', methods=['POST'])
+@app.route('/nltk', methods = ['POST'])
 def endpoint_nltk():
     # We use 'force' to skip mimetype checking to have shorter curl command.
-    data = request.get_json(force=True)
+    data = request.get_json(force = True)
     print('endpoint_nltk, data =', data)
        
     try:
@@ -145,6 +66,35 @@ def endpoint_nltk():
     except (KeyError, TypeError, ValueError):
         raise JsonError(description = 'Invalid value.')
     return json_response(value = value + 1)
+
+
+
+
+###############################################
+#                  USE                        #
+###############################################    
+@app.route('/use', methods = ['POST'])
+def endpoint_use():
+    # We use 'force' to skip mimetype checking to have shorter curl command.
+    data = request.get_json(force = True)
+    print('endpoint_use, data =', data)
+       
+    try:
+        question = data['question']
+        print('endpoint_use, question =', question)        
+           
+        # Préparation données
+        df_question_use = preparation.preparation_use(question_in = question)
+        print('endpoint_use, df_question_use =\n', df_question_use)
+    
+        # Prédiction tag  
+        pred_use = prediction.prediction_use(df_question_in = df_question_use)
+        print('endpoint_use, pred_use =', pred_use)
+       
+    except (KeyError, TypeError, ValueError):
+        raise JsonError(description = 'Invalid value.')
+    return json_response(value = value + 1)
+
 
 
 

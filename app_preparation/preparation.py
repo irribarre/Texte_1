@@ -13,6 +13,7 @@ from nltk.stem import WordNetLemmatizer, PorterStemmer
 import emoji
 
 from sklearn.feature_extraction.text import CountVectorizer
+import tensorflow_hub as hub
 
 
 ###################################################
@@ -363,7 +364,37 @@ def preparation_nltk(question_in):
 
 
 # @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-# @ 2) WORD2VEC                                                                    @
+# @ 2) USE                                                                         @
 # @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+   
+# Préparation des données avec USE : création des features
+def preparation_use(question_in):
+          
+    embed = hub.load("https://tfhub.dev/google/universal-sentence-encoder/4") # USE (Universal Sentence Encoder)
 
+    print('\n\n\n')
+    print('@' * 30, ' preparation_use ', '@' * 30)
+    print('preparation_use, question_in =', question_in)
 
+    
+    # texte brut 
+    sentences   = []
+    sentences.append(question_in)  
+#    sentences = question_in.to_list()
+    print('preparation_use, sentences =', sentences)
+          
+          
+    batch_size = 1
+    
+    for step in range(len(sentences)//batch_size):
+        idx = step * batch_size
+              
+        feat = embed(sentences[idx:idx + batch_size])
+
+        if (step == 0):
+            features = feat
+        else :
+            features = np.concatenate((features, feat))
+    print('preparation_use, features.shape =', features.shape)          
+          
+    return(features)

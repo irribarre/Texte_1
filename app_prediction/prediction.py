@@ -55,3 +55,31 @@ def prediction_nltk(df_question_in):
     print('y_pred (NLTK) =', y_pred)
     
     return(y_pred)
+
+
+
+
+###############################################
+#                  USE                        #
+###############################################    
+# Prédiction avec USE
+def prediction_use(df_question_in):
+
+    print('prediction_use, df_question_in =\n', df_question_in)
+            
+    USE_MODEL_NAME = './app_models/model_LinearSVC_USE.pkl'
+    print('prediction_use, USE_MODEL_NAME =', USE_MODEL_NAME)
+    
+        
+    
+    # Loading model to compare the results
+    # https://medium.com/@maziarizadi/pickle-your-model-in-python-2bbe7dba2bbb
+    loaded_model = pickle.load(open(USE_MODEL_NAME, 'rb'))
+    print('prediction_use, loaded_model')
+        
+    y_pred = loaded_model.predict(df_stemmer_columns)
+    
+    print('y_pred (USE) =', y_pred)
+    
+    return(y_pred)    
+    
