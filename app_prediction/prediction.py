@@ -69,9 +69,11 @@ def prediction_nltk(df_question_in):
     y_pred = loaded_model.predict(df_stemmer_columns)
     
     print('prediction_nltk, y_pred =', y_pred)
+    print('prediction_nltk, type(y_pred) =', type(y_pred))    
     
     
     # Recherche classe(s) prédite(s)
+    # https://www.freecodecamp.org/french/news/trouver-dans-une-liste-python-comment-trouver-iindex-dun-element-dans-une-liste/    
 #    y_classes.index('android')
 
     y_pred_indices  = [index for (index, item) in enumerate(y_pred) if (item == 1)]
