@@ -35,14 +35,13 @@ def prediction_nltk(df_question_in):
 
     for col in df_stemmer_columns.columns:
         if (col in df_question_in):
-            value = df_question_in[col]
+            value = df_question_in[ind_ligne, col]
         else:
             value = 0
         print('prediction_nltk, col =', col, ':', value)
         liste_question.append(value)
         
-    print(liste_question)
-
+#    print('prediction_nltk, liste_question =', liste_question)
     df_stemmer_columns.loc[ind_ligne] = liste_question
 
 
@@ -50,8 +49,8 @@ def prediction_nltk(df_question_in):
     # Vérification mise à jour : affichage des colonnes non vides
     print('prediction_nltk, df_stemmer_columns.shape =', df_stemmer_columns.shape)
     for col in df_stemmer_columns.columns:
-        if (df_stemmer_columns[col] != 0):
-            print('prediction_nltk, colonne', column_name, '\t=', column_data.values)
+        if (df_stemmer_columns[ind_ligne, col] != 0):
+            print('prediction_nltk, colonne', col, '\t=', df_stemmer_columns[ind_ligne, col])
         
     
     # Loading model to compare the results
