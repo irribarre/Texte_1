@@ -65,7 +65,7 @@ def endpoint_nltk():
        
     except (KeyError, TypeError, ValueError):
         raise JsonError(description = 'Invalid value.')
-    return json_response(value = value + 1)
+    return json_response(pred_nltk)
 
 
 
