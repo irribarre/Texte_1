@@ -13,7 +13,7 @@ from nltk.stem import WordNetLemmatizer, PorterStemmer
 import emoji
 
 from sklearn.feature_extraction.text import CountVectorizer
-import tensorflow_hub as hub
+#import tensorflow_hub as hub
 
 
 ###################################################
