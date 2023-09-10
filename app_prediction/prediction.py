@@ -35,7 +35,7 @@ def prediction_nltk(df_question_in):
 
     for col in df_stemmer_columns.columns:
         if (col in df_question_in):
-            value = df_question_in[ind_ligne, col]
+            value = df_question_in.loc[ind_ligne, col]
             print('prediction_nltk, col =', col, ':', value)            
         else:
             value = 0
