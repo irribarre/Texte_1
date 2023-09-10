@@ -38,9 +38,9 @@ def prediction_nltk(df_question_in):
             value = df_question[col]
         else:
             value = 0
-          
-    print('prediction_nltk, col =', col, ':', value)
+        print('prediction_nltk, col =', col, ':', value)
         liste_question.append(value)
+        
     print(liste_question)
 
     df_stemmer_columns.loc[ind_ligne] = liste_question
