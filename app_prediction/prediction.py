@@ -22,6 +22,7 @@ def prediction_nltk(df_question_in):
     print('prediction_nltk, NLTK_MODEL_NAME =', NLTK_MODEL_NAME)
     
     
+    
     # Intégration df_question_in dans les colonnes des données entraînées
     df_stemmer_columns = pd.read_csv('./app_prediction/df_stemmer_columns.csv', sep = '\t')
     print('prediction_nltk, df_stemmer_columns.shape =', df_stemmer_columns.shape)
@@ -29,20 +30,28 @@ def prediction_nltk(df_question_in):
     
     # Boucle sur les colonnes
     # https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.items.html   
-    ind_ligne = 0 # initialisation de la ligne correspondant à la question écrit depuis postman.
-    
-    for (column_name, column_data) in df_stemmer_columns.items():
-        if column_name in df_question_in.columns:
-            df_stemmer_columns.loc[ind_ligne, column_name] = df_question_in[column_name]
-            print('colonne :', column_name, '\t-->', df_stemmer_columns[column_name].value) 
+    ind_ligne      = 0 # initialisation de la ligne correspondant à la question écrite depuis postman.
+    liste_question = []
+
+    for col in df_stemmer_columns.columns:
+        if (col in df_question_in):
+            value = df_question[col]
         else:
-            df_stemmer_columns.loc[ind_ligne, column_name] = 0
+            value = 0
+          
+    print('prediction_nltk, col =', col, ':', value)
+        liste_question.append(value)
+    print(liste_question)
+
+    df_stemmer_columns.loc[ind_ligne] = liste_question
+
+
    
     # Vérification mise à jour : affichage des colonnes non vides
     print('prediction_nltk, df_stemmer_columns.shape =', df_stemmer_columns.shape)
-    for (column_name, column_data) in df_stemmer_columns.items():
-        if (column_data.values != 0):
-            print('colonne', column_name, '\t=', column_data.values)
+    for col in df_stemmer_columns.columns:
+        if (df_stemmer_columns[col] != 0):
+            print('prediction_nltk, colonne', column_name, '\t=', column_data.values)
         
     
     # Loading model to compare the results
