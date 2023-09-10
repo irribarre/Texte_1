@@ -8,6 +8,9 @@ import pandas as pd
 #             PREDICTION DES DONNEES              #
 ###################################################
   
+y_classes = ['.net', 'android', 'asp.net', 'c', 'c#', 'c++', 'css', 'html', 'ios', 'iphone', 'java', 'javascript', 'jquery', 'json',
+             'linux', 'mysql', 'node.js', 'objective-c', 'performance', 'php', 'python', 'reactjs', 'ruby-on-rails', 'spring',
+             'sql', 'swift', 'windows', 'xcode'] 
 
     
 ###############################################
@@ -15,6 +18,9 @@ import pandas as pd
 ###############################################    
 # Prédiction avec NLTK
 def prediction_nltk(df_question_in):
+    
+    # Initialisation
+    y_pred_str = ''
     
     print('prediction_nltk, df_question_in =\n', df_question_in)
             
@@ -52,7 +58,7 @@ def prediction_nltk(df_question_in):
     for col in df_stemmer_columns.columns:
         value = df_stemmer_columns.loc[ind_ligne, col]
         if (value != 0):
-            print('\t- prediction_nltk, colonne', col, '\t=', value)
+            print('\t- prediction_nltk, colonne', col, '=', value)
         
     
     # Loading model to compare the results
@@ -62,9 +68,21 @@ def prediction_nltk(df_question_in):
         
     y_pred = loaded_model.predict(df_stemmer_columns)
     
-    print('y_pred (NLTK) =', y_pred)
+    print('prediction_nltk, y_pred =', y_pred)
     
-    return(y_pred)
+    
+    # Recherche classe(s) prédite(s)
+#    y_classes.index('android')
+
+    y_pred_indices  = [index for (index, item) in enumerate(y_pred) if (item == 1)]
+    print('prediction_nltk, y_pred_indices =', y_pred_indices)
+
+    for ind in y_pred_indices:
+        y_pred_str = y_pred_str + y_classes[ind]
+        
+    print('prediction_nltk, y_pred_str =', y_pred_str)
+        
+    return(y_pred_str)
 
 
 
