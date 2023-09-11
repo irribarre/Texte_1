@@ -72,11 +72,17 @@ def prediction_nltk(df_question_in):
     print('prediction_nltk, type(y_pred) =', type(y_pred))    
     
     
+    # Transformation ndarray --> liste
+    y_pred_list = y_pred.tolist()
+    print('prediction_nltk, y_pred_list =', y_pred_list)
+    print('prediction_nltk, type(y_pred_list) =', type(y_pred_list))
+    
+    
     # Recherche classe(s) prédite(s)
     # https://www.freecodecamp.org/french/news/trouver-dans-une-liste-python-comment-trouver-iindex-dun-element-dans-une-liste/    
 #    y_classes.index('android')
 
-    y_pred_indices  = [index for (index, item) in enumerate(y_pred) if (item == 1)]
+    y_pred_indices  = [index for (index, item) in enumerate(y_pred_list) if (item == 1)]
     print('prediction_nltk, y_pred_indices =', y_pred_indices)
 
     for ind in y_pred_indices:
