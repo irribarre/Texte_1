@@ -68,14 +68,20 @@ def prediction_nltk(df_question_in):
         
     y_pred = loaded_model.predict(df_stemmer_columns)
     
-    print('prediction_nltk, y_pred =', y_pred)
-    print('prediction_nltk, type(y_pred) =', type(y_pred))    
+    print('prediction_nltk, y_pred\t\t=', y_pred)
+    print('prediction_nltk, y_pred.shape\t=', y_pred.shape)    
+    print('prediction_nltk, type(y_pred)\t=', type(y_pred))    
+    
+    # Transformation ndarray 2D --> ndarray 1D
+    y_pred_1D = np.hstack(y_pred)
+    print('prediction_nltk, y_pred_1D\t\t=', y_pred_1D)
+    print('prediction_nltk, type(y_pred_1D)\t=', type(y_pred_1D))
     
     
     # Transformation ndarray --> liste
-    y_pred_list = y_pred.tolist()
-    print('prediction_nltk, y_pred_list =', y_pred_list)
-    print('prediction_nltk, type(y_pred_list) =', type(y_pred_list))
+    y_pred_list = y_pred_1D.tolist()
+    print('prediction_nltk, y_pred_list\t\t=', y_pred_list)
+    print('prediction_nltk, type(y_pred_list)\t=', type(y_pred_list))
     
     
     # Recherche classe(s) prédite(s)
