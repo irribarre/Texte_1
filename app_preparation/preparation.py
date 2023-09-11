@@ -152,8 +152,8 @@ def cleaning_mot(texte_in, min_len_word_in = 3):
     
         
     # Suppression des mots qui ne sont pas dans le dictionnaire anglais 
-    tokens_english = [w for w in tokens_no_stop_words if (w in english_words) |
-                                                         (w in token_tags)]
+    tokens_english = [w for w in tokens_no_stop_words if ((w in english_words) |
+                                                          (w in token_tags))]
     print('cleaning_mot, tokens_english =', tokens_english)
     
         
