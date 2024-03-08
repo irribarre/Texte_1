@@ -15,11 +15,9 @@ Stack Overflow (questions et réponses dans différents domaines du développeme
 <br/>
 ## 4) NOTEBOOKS :
 - NOTEBOOK D'EXPLORATION : **1_notebook_exploration.ipynb / 1_notebook_exploration_light.ipynb** (version avec des traces réduites) : 
-analyse univariée,<br/>
-analyse multivariée,<br/> 
-réduction dimensionnelle,<br/>
-différentes questions de recherche associées.
-<br/> 
-- NOTEBOOK DE TEST : **2_notebook_test.ipynb** : test des différents modèles.
-<br/>
+-- Analyse univariée.<br/>
+-- Analyse multivariée.<br/> 
+-- Réduction dimensionnelle.<br/>
+-- Différentes questions de recherche associées.<br/> 
+- NOTEBOOK DE TEST : **2_notebook_test.ipynb** : test des différents modèles.<br/>
 - POINT D'ENTREE D'UNE API POUR LE TEST : **4_point_entree_API.ipynb**.
